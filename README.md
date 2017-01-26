@@ -4,3 +4,4 @@ Learn Python the Hard Way solutions done in Python 3 instead of Python 2 as per 
  The book can be found at:
 https://learncodethehardway.org/python/
 
+If there is any mistakes, plese alert me; all solutions were hand typed.

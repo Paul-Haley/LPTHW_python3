@@ -2,16 +2,17 @@ from sys import argv
 
 script, input_file = argv
 
-"""This function reads the whole file (f)"""
 def print_all(f):
+    """This function reads the whole file (f)"""
     print (f.read())
 
-"""Rewinds (moves the reading position) back to the start of the file (f)"""
 def rewind(f):
+    """Rewinds (moves the reading position) back to the start of the 
+    file (f)"""
     f.seek(0)
 
-"""Prints the current line of the file specified (f)"""
 def print_a_line(line_count, f):
+    """Prints the current line of the file specified (f)"""
     print (line_count, f.readline())
 
 current_file = open(input_file)

@@ -1,0 +1,71 @@
+THIS LIST MAY BE INCOMPLETE, I WOULD RECOMMEND THAT YOU STILL GO THROUGH ALL
+THE EXERCISES MANUALLY TO SEE USAGES.
+
+FUNCTIONS:
+print()
+    Used to print strings. These strings can be formatted with various formatters after a % symbol.
+    %
+        Formatter for strings
+    %d
+        Formatter for integers
+    %r
+        String representation (debugging)
+    %s
+        String representation
+input()
+    Can take a string and will return the stdin (user input)
+open()
+    Opens the file specified and returns a file (file pointer).
+    'r'
+        Adding this to the open(file, 'r') will open the file in read mode,
+        this is the default mode.
+    'w'
+        This will open the file in write mode, truncating all current contents
+truncate()
+    Truncates all the contents from the file specified
+read()
+    Reads the entire file contents and returns it
+readline()
+    Reads the current line of the file
+seek()
+    Seeks the index into the file (location in file) to the index given
+write()
+    Writes the specified string to the file at the current location
+
+OPERATORS:
+=
+    Assign a value to a variable
++
+    Addition
++=
+    Add value to the current variables value and store it in the variable
+-
+    Subtractions
+*
+    Multiplication
+    or allowing any number of arguments (recall *argv)
+/
+    integer division. Example: 3/4 = 0, 5/4 = 1
+//
+    float division. Example: 3//4 = 0.75
+,
+    Used to seperate arguments
+#
+    Used to start a comment
+"text"
+    " is used to make a String
+'text'
+    ' is also used to make a String
+"""text over
+several lines"""
+    """ another way of specifying a string. Also used for giving function 
+        descriptions.
+
+OTHER KEYWORDS:
+from
+    keyword used to specify the module to import something from
+import
+    Used to specify the 'feature' to import from the module
+def name():
+    Used to define a function called name with parameters (given arguments) in
+    the parenthesises (). 

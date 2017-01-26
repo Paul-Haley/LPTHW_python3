@@ -1,0 +1,9 @@
+I have not personally made any large/ real world Python 3 (or any Python) 
+program before. Best thing to do would be to just search through GitHub or if 
+you know of some existing code, look it up.
+
+The LIBSVM repository has some Python code located here:
+https://github.com/cjlin1/libsvm/tree/master/python
+
+The Java implementation is utilised in my other repository:
+https://github.com/Paul-Haley/svm_gui
