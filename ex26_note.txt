@@ -1,0 +1,10 @@
+You can check your answer to my answer easily on Unix like operating systems
+like Linux (Ubuntu, Debian, macOS, etc.).
+
+Type this at your command line (terminal), replace 'ex26_yours.py' with your
+file:
+diff ex26.py ex26_yours.py
+or you can diff with the given file and my file to see what I fixed:
+diff ex26.py exercise26.txt
+
+You can learn more about diff by typing 'man diff' into your command line.

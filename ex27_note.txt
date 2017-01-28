@@ -1,0 +1,36 @@
+Memorising these operators is essential! Other truth tables you may find on 
+the internet and textbooks may use 0 and 1 to denote false and true
+respectively. I would also recommend if you have the time to also learn a bit 
+about boolean logic.
+
+There is also a '<' and '>' operators that are very similar to  '<=' and '>=' 
+which no table is provided for.
+
+Let x = 4,  y = 5 and z = 4 for all these examples
+
+------------
+<=      True?
+x <= y  True
+x <= z  True
+-------------
+
+------------
+<       True?
+x < y   True
+x < z   False
+------------
+
+------------
+>=      True?
+x >= y  False
+x >= z  True
+------------
+
+------------
+>       True?
+x > y   False
+x > z   False
+------------
+
+It is also worth noting that x <= y logically equivalent to y >= x
+
