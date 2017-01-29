@@ -1,0 +1,32 @@
+In this file I will add a bit of personal experience and recommendations for 
+exercise 36.
+
+Rules for If-Statements:
+*Always having an else is not too vital, context matters though.
+*Having complex boolean tests over multiple lines can make sense sometimes, 
+especially with long variable names.
+
+THE WARNING GIVEN IS EXTREMELY ACCURATE
+
+Rules for Loops:
+*While loops should only be used when the amount of looping is unknown or 
+infinite. When I say 'unknown', anything that a for loop cannot be processing.
+*A sign that you should be using a for loop instead of a while loop is when you
+are indexing through a data structure (like a list).
+
+Tips for Debugging:
+*Start simple and use prints, they will get you a long way.
+*Really, prints are a vital skill.
+*Test early and test often, start testing as soon as you can on a piece of 
+code.
+*Debuggers will come in handy later on (probably well beyond this textbook). 
+Debuggers will let you track variable values easily (prints can technically 
+allow you to do this) and also follow the flow of the program (what gets 
+called).
+
+Homework:
+The map for this kind of game is technically called a statemachine. They can 
+get complex very quickly depending on variable counts and number of possible 
+states (think combinations of rooms and things done previously).
+
+
