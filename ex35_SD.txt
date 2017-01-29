@@ -1,0 +1,67 @@
+STUDY DRILL 1: Apologies for rough sketch
+Doors <-------------------------|
+|                               |
+|-------|                       |
+left    right                   |
+|       |                       |
+|    -->cthulhu                 |
+|    |   |                      |
+|    |   |-------|-------|      |
+|    |   other   head    flee   |
+|    |   |       |       |      |
+|    |---|       dead    |------|
+|
+bear
+|       
+|-------|-----------|
+taunt   open door   take honey
+|       |           |
+|       dead        dead
+|
+bear_moved = True
+|
+|-------|-----------|
+taunt   open door   take honey
+|       |           |
+dead    |           dead
+        |
+        gold
+        |
+|-------------------|
+0 or 1 in choice    otherwise
+|                   |
+choice is < 50      dead
+|
+|-------|
+win     dead
+STUDY DRILL 2: Best you can do is diff with my attempt of typing it or copy 
+and paste from the textbook into a file and do a diff with that file.
+
+STUDY DRILL 3: Try commenting yourself first, best learning experience. I have
+commented my version if that helps.
+
+STUDY DRILL 4: A simple way of expanding it would be to add another door.
+
+STUDY DRILL 5: I will work backwards with the questions they ask. int() tries 
+(key word) to convert the string given to an integer, if it cannot it throws 
+an 'error'. The only testing we do for if it is an error is by seeing if there 
+is a '0' or '1' in the string. For example if you give the following input it 
+breaks as shown below:
+
+This room is full of gold. How much do you take?
+> 1win
+Traceback (most recent call last):
+  File "ex35.py", line 73, in <module>
+    start()
+  File "ex35.py", line 67, in start
+    bear_room()
+  File "ex35.py", line 37, in bear_room
+    gold_room()
+  File "ex35.py", line 8, in gold_room
+    how_much = int(choice)
+ValueError: invalid literal for int() with base 10: '1win'
+
+A better way to write it would be to look for this error. If the error occurs, 
+ask for the number again. Error (exception) handling is likely covered later 
+(I have not read the whole book yet), if it is not though, I would highly 
+recommend looking it up.
