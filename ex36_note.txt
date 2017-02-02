@@ -29,4 +29,8 @@ The map for this kind of game is technically called a statemachine. They can
 get complex very quickly depending on variable counts and number of possible 
 states (think combinations of rooms and things done previously).
 
-
+With respect to doing the easiest steps first, I would recommend getting the 
+minimum functionality done first. What I mean by this is getting something 
+like your main function done and the calls if makes from there. When an easier
+part can be done first, do it, otherwise focus on structure. Remember to 
+comment when you write your own code!

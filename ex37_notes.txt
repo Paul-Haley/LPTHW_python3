@@ -1,0 +1,170 @@
+With all of these command and keywords, I would simply recommend going through
+the help command in python3. If you still do not understand or want to know 
+more, start searching online. 
+
+Below I have done my own little expansion of some of the commands and 
+keywords.
+
+KEYWORDS:
+and         True if and only if both sides are True
+
+as          See keywords `with`
+
+assert      Like LPTHW says, assert tests if something is true. This is useful
+when we are trying to debug things and verify variables are what they should
+be. For example, if you expect x = 1 then write assert(x == 1).
+
+break       Ends the inner most loop. See ex37_break.py for an example.
+
+class       Define a new class. Classes and object orientation will likely be 
+explained later. In short, all data structures that are not primitives (int, 
+boolean, float) are defined in a class. The highest level class if object, 
+everything else is a subclass of it.
+ 
+continue    Stops processing of the current loop iteration and advances to 
+the next one.
+
+def         Define a function. In classes you also use def to override default
+functions, this should be explained later.
+
+del         Used to delete a variable or an element from a variable. For 
+example, a dictionary stores a alias (key) and some data referenced by a  key. 
+The `del` command can be used to remove a key and its data from the dictionary.
+See the example ex37_dictionary.py
+
+else, elif  You should know how these work by now.
+
+except      This is used for handling exceptions. Exceptions are error that 
+occur like dividing by 0 and items being the wrong datatype (something was 
+expecting a int but was given a string) to name a few. These will likely be 
+explained more later.
+
+exec        It is more complex than LPTHW shows it. Effectively it allows for
+[exec]ution of the given program in a new process. A process in this context 
+is a operating system process, this is likely beyond the scope of this book. 
+For more information, try searching Unix processes.
+
+finally     Code that will always be executed. Typically used in exception 
+catching and handling, again, hopefully explained later.
+
+for         Performing a for loop, you should understand these by now.
+
+from        Used in importing, best examples were where we were importing 
+argv from system.
+
+global      Used to declare a global variable. DO NOT USE THIS. You typically 
+do not want any global variables in a well written program. You may find it 
+worth it to do a internet search for usage examples and when to use.
+
+if          You should know how to use this by now.
+
+import      Used to import modules to use
+
+in          You currently know that it is used in setting up a for loop. It 
+is also used for testing if an element is present in a set, see 
+ex37_dictionary.py for an example.
+
+is          Can be used for testing equality. Go to help() in python3 and type 
+is in to read more about comparators in general, it can get a bit complex.
+
+lambda      Used to make an anonymous function. The example given in LPTHW 
+make a `s` a lambda function. Another example would be `p = lambda x: x + 1` 
+which would simply add one to whatever is given (it does not update the 
+variable).
+
+not         not True == False; not False == True. Logical not.
+
+or          logical or. True or False == True; False or False == False
+
+pass        Used to explicitly state that a block is empty. This is useful when 
+you want to have functions defined but have not implemented it.
+
+print       We have explored this to quite a depth as so far.
+
+raise       Used to explicitly raise an exception. Should be explained later 
+with exceptions (if covered).
+
+try         Place code in a try block that could raise an exception. The use 
+of `except` statements are used to catch specific exceptions.
+
+while       You should be familiar with a while loop. Only use when the number 
+of iterations is unknown.
+
+with        Used with the `as` keyword. Typically used to have temporary 
+context, think how variables in a `if` block are not available outside the 
+block. This is useful for opening files, threading (might be covered later) 
+and doing other temporary operations.
+PEP 343 discussion on with-as reason for development and some examples:
+https://www.python.org/dev/peps/pep-0343/
+Concise alternative explanation referencing PEP 343 and its examples:
+http://stackoverflow.com/questions/3012488/what-is-the-python-with-statement-designed-for
+
+yield       Used to make a generator function. Generator functions are like 
+normal functions that you have been taught as so far, but have the keyword 
+`yield` on the value they return. When `next(generator_function)` is called, 
+the generator function will execute until it reaches its next yield statement. 
+This can be used for lazy evaluation, not doing something until needed.
+
+DATA TYPES: I will only cover unfamiliar ones.
+None        Represents nothing, no value or absence of a value. Not to be used 
+as an alternative to false.
+
+float       A float can be any real number. Only use it when decimal place 
+accuracy is needed, sometimes it is best to just used scaled values integers.
+
+list        A ordered sequence of elements
+
+dict        A set of pairs containing and key and value. See ex37_dictionary.py
+ for an example.
+
+STRING ESCAPE SEQUENCES: I would recommend that you try printing each one in 
+python3.
+
+SEQUENCE    PRINTS AS/WHAT IT DOES
+\\          \
+
+\'          '
+
+\"          "
+
+\a          This will play the system alarm sound. This is a sound that would 
+normally play when a notification box comes up on your computer.
+
+\b          Does a nondestructive backspace. This page has a good example: 
+http://stackoverflow.com/questions/6792812/the-backspace-escape-character-b-in-c-unexpected-behavior
+
+\f          Form feed. Starts a new page (or clears the terminal screen).
+
+\n          Starts a new line and returns the carriage (where the next 
+character will be printed) to the start of that line.
+
+\r          Returns the carriage to the start of the line without changing 
+line.
+
+\t          Does a tab, the length of the tab is system/environment dependent.
+
+\v          Prints a vertical tab. Not typically used any more, mostly 
+historical.
+
+STRING FORMATS: The description in LPTHW is good, use it.
+
+OPERATORS: I will only cover unfamiliar ones that could do with a better 
+explanation
+
+//          Floor division could also be called integer division.
+
+%           Returns what would be the remainder from doing integer division.
+
+@           Used as a decorator to functions and classes. As of Python 3.5 it 
+can be used for matrix multiplication in some mathematics libraries, most 
+notably, numpy.
+PEP 465 covering the reasoning for matrix multiplication introduction:
+https://www.python.org/dev/peps/pep-0465/#intended-usage-details
+
+,           It has other uses, not need for those other uses though.
+
+.           Dot operator is used for calling an object's method or getting one 
+of its properties.
+
+;           Starts a new statement on the same line. Best to start a new line 
+typically. 
