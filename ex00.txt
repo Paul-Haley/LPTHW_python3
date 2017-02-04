@@ -1,0 +1,15 @@
+You will need to install Python 3 typically no matter what system you have.
+To check if you have a Python installation, go to your command prompt 
+(Powershell for Windows, terminal (bash) for OSX or Linux) and type python.
+If it returns a version number of 2 when it starts, type `exit()` and try 
+typing python3. If the latter does not exist or both say they don't exist, you
+will need to install Python 3. The easiest way would be to search the Python 
+website https://www.python.org/
+The installion is pretty straight forward.
+
+Text editor wise, Atom is pretty good for a first one. I use vim for Python and
+C, but, use Eclipse for Java. It is best to not use a IDE (don't worrry if you 
+do not worry what this means) when learning a language as you become dependent 
+on it.
+
+I am happy to communicate if you are having troubles setting up.
