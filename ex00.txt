@@ -4,12 +4,16 @@ To check if you have a Python installation, go to your command prompt
 If it returns a version number of 2 when it starts, type `exit()` and try 
 typing python3. If the latter does not exist or both say they don't exist, you
 will need to install Python 3. The easiest way would be to search the Python 
-website https://www.python.org/
-The installion is pretty straight forward.
+website (https://www.python.org/). The installion is pretty straight forward.
 
 Text editor wise, Atom is pretty good for a first one. I use vim for Python and
 C, but, use Eclipse for Java. It is best to not use a IDE (don't worrry if you 
 do not worry what this means) when learning a language as you become dependent 
 on it.
+
+Make sure to have done the command line exercises before doing any other Python
+exercises. Even if you only came to learn Python, you will learn more about 
+programming works and why we have programming languages like Python. Command 
+line skills are also essential to any Software Engineering employment.
 
 I am happy to communicate if you are having troubles setting up.
