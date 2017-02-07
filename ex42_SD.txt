@@ -1,0 +1,17 @@
+An offical explaination in the Python 2 documentation can be found here:
+https://docs.python.org/2/reference/datamodel.html#new-style-and-classic-classes
+
+Summary:
+Effectively it unified class and type, this was in Python 2.2. When Python 3 
+was made, this old type of class was removed. When a class is defineed in 
+Python 3 without specifying the inherited from class, object is used by 
+default. NOTE: it is bad form to not be explict that object is being used.
+
+Other:
+I would also recommend running the script files like:
+python3 -i ex42.py
+
+Doing this runs the script and then puts Python into interactive mode. 
+Interactive mode will mean that your Python environment will still have all 
+the classes and variables defined. For example, you will be able to access 
+the variable `rover` and call methods like `type(rover) is Dog`.
