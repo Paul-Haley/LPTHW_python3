@@ -1,20 +1,38 @@
 # TODO:
 #   * Put items descriptions in a dictionary
 #   * The map and lever could be better implemented together
+#   * Better ending
+#   * Maybe a saving system
 import ex45_rooms
 
+import time
 import random as rand # This shortens random.suffle() to rand.shuffle()
 from sys import argv
 from enum import Enum, unique
 
 # Enum[erated] constants. Useful for having constants bound to real words.
-@unique
 class Direction(Enum):
-    UNDEF = -1
-    NORTH = 0
+    """Positive is for North or East directions."""
+    NORTH = 1
     EAST = 1
-    SOUTH = 2
-    WEST = 3
+    SOUTH = -1
+    WEST = -1
+
+def print_help():
+    """Prints out game help."""
+    print("""Game commands:
+    COMMAND                     DESCRIPTION
+    help                        Prints this screen
+    go <direction>              Takes NORTH, SOUTH, EAST or WEST
+    use <item>                  Use an item in the room
+    use <item1> on <item2>      Use an inventory item on something else
+    pickup <item>               Pickup the item in the room
+    see                         Describe what you see
+    contents                    Displays the rooms contents
+    inventory                   Displays what you have in your inventory
+
+    exit                        Closes the game
+    """)
 
 class Engine(object):
     
@@ -26,21 +44,130 @@ class Engine(object):
         self.row = rand.randint(0, game_map.ROWS - 1)
         self.col = rand.randint(0, game_map.COLS - 1)
         self.inventory = [] # empty inventory
+        self.game = game_map
+        self.room = self.game.layout[self.row][self.col]
 
     def play(self):
         print("\t\tThe Adventures of %s\n" % name)
         print("You awake in a dimly lit room...\n")
         alive = True
         while alive: # main game loop
-            room = game_map.get_room(self.row, self.col)
+            self.room = game_map.get_room(self.row, self.col)
             print(room.description)
-            if input("do something") == "die":
-                alive = False
+            read_input(self.room, self.game, input("> "))
+        
+        end_game(alive)
+            
+    
 
+    def read_input(command):
+        """Handles reading the commands given by the user. This function 
+        will make the required changes to the game state. The returns:
+            0 if the command could not be read
+            1 if command was read successfully
+            2 if user died
+            3 if user won the game
+            """
+        commands = command.split(' ')
+        if not len(commands) or commands[0] == 'help':
+            print_help()
+            return 1
+        elif commands[0] == 'go' and len(commands) == 2: # go <direction>
+            if commands[1] in [Direction.NORTH.name, Direction.SOUTH.name]:
+            for i in Directions:
+                if commands[1] == i.name:
+                    heading = self.row + i.value
+                    if i is Direction.NORTH or i is Direction.SOUTH:
+                        if 0 < heading or heading < game_map.ROWS:
+                            self.row = heading
+                    else: # Must be traversing East or West
+                        if 0 < heading or heading < game_map.COLS:
+                            self.col = heading
+                    print("You open the %s door and proceed through." % i.name)
+                    return 1
+            print("Invalid direction")
+            return 0 # direction could not be read
+        elif len(commands) == 2 and commands[0] == 'use': # use <item>
+            if command[1] == 'lever' and 'lever' in self.room.contains:
+                self.game_map.lever_used = True
+                print("You toggle the lever and hear grinding in the distance")
+                return 1
+            elif command[1] == 'monster' and 'monster' in self.room.contains:
+                monster_attack()
+                return 2 # player has died
+            elif command[1] == 'exit' and 'exit' in self.room.contains 
+                    and self.game_map.lever_used:
+                win()
+                return 3 # player has won the game
+        elif len(commands) == 4 and commands[0] == 'use' and 
+                commands[2] == 'on': # use <item1> on <item2>
+            if commands[1] in self.inventory:
+                pass # TODO: do something with the item
+        elif len(commands) == 2 and commands[0] == 'pickup': # pickup <item>
+            pass # handle pickuping up item and failures. See Room method
+        elif command[0] == 'see': # see
+            print(self.room.description)
+            return 1
+        elif command[0] == 'contents':
+            self.room.display_contents()
+            return 1
+        elif command[0] == 'inventory': # inventory
+            print(self.inventory) # TODO: Make this print pretty
+            return 1
+        elif command[0] == 'exit':
+            confirm = input("Type Y to exit or anything else to continue: ")
+            if confirm == 'Y':
+                exit(1)
+            return 1
+        return 0 # Otherwise the command is not valid
+
+    def win():
+        """Handles the player winning the game."""
+        print("You enter the hatch in the floor.")
+        time.sleep(1)
+        print("You climb down the ladder and begin walking the tunnel")
+        for i in range(3):
+            time.sleep(i)
+            print("...and walking")
+        print("You see a a green blur ahead and run to it.")
+        time.sleep(2)
+        print("You climb the steps and realise it is an exit sign.")
+        time.sleep(2)
+        print("You open the door below the sign and step outside.")
+        time.sleep(2)
+        print("As your eyes adjust to the outside light you hear the door "\
+                "slam behind you.\a")
+        time.sleep(3)
+        print("You find yourself in a forest.")
+        time.sleep(2)
+        return
+
+    def monster_attack():
+        """Handles the monster killing the player."""
+        print("GROWL")
+        time.sleep(1)
+        print("The monster scratches you accross the chest\a. You "\
+                "crash to the ground in pain!")
+        time.sleep(2)
+        print("The monster approaches you as you hopelessly crawl.")
+        time.sleep(2)
+        print("You are flipped onto your back and stare the monster "\
+                "in the eye.\a")
+        time.sleep(1)
+        print("\n\t\tThose green eyes, they are memorising.")
+        time.sleep(3)
+        print("\n\aYou take your final strike and pass out.")
+        time.sleep(5)
+        return
+    
+    def end_game(alive):
+        """Prints the final end game message based if the player is alive 
+        (alive == True) or dead (alive == False)."""
         if alive:
             print("\n\n\t\tYou managed to escape! Well done!")
         else:
             print("\n\n\t\tOh dear, you are dead!")
+
 
 class Room(object):
     """Class used to represent a in game room"""
