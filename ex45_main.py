@@ -53,14 +53,14 @@ class Engine(object):
         alive = True
         while alive: # main game loop
             self.room = game_map.get_room(self.row, self.col)
-            print(room.description)
-            read_input(self.room, self.game, input("> "))
+            print(self.room.description)
+            self.read_input(input("> "))
         
         end_game(alive)
             
     
 
-    def read_input(command):
+    def read_input(self, command):
         """Handles reading the commands given by the user. This function 
         will make the required changes to the game state. The returns:
             0 if the command could not be read
@@ -69,11 +69,10 @@ class Engine(object):
             3 if user won the game
             """
         commands = command.split(' ')
-        if not len(commands) or commands[0] == 'help':
+        if not len(commands) or commands[0] == 'help': # help or <nothing>
             print_help()
             return 1
         elif commands[0] == 'go' and len(commands) == 2: # go <direction>
-            if commands[1] in [Direction.NORTH.name, Direction.SOUTH.name]:
             for i in Directions:
                 if commands[1] == i.name:
                     heading = self.row + i.value
@@ -95,11 +94,14 @@ class Engine(object):
             elif command[1] == 'monster' and 'monster' in self.room.contains:
                 monster_attack()
                 return 2 # player has died
-            elif command[1] == 'exit' and 'exit' in self.room.contains 
-                    and self.game_map.lever_used:
-                win()
-                return 3 # player has won the game
-        elif len(commands) == 4 and commands[0] == 'use' and 
+            elif command[1] == 'exit' and 'exit' in self.room.contains \
+                    and self.game_map.lever_used: # use exit
+                if self.game_map.lever_used: # if the lever has been used
+                    win()
+                    return 3 # player has won the game
+                else:
+                    print("The hatch is closed and there is no clear")#TODO:
+        elif len(commands) == 4 and commands[0] == 'use' and \
                 commands[2] == 'on': # use <item1> on <item2>
             if commands[1] in self.inventory:
                 pass # TODO: do something with the item
@@ -121,7 +123,7 @@ class Engine(object):
             return 1
         return 0 # Otherwise the command is not valid
 
-    def win():
+    def win(self):
         """Handles the player winning the game."""
         print("You enter the hatch in the floor.")
         time.sleep(1)
@@ -142,7 +144,7 @@ class Engine(object):
         time.sleep(2)
         return
 
-    def monster_attack():
+    def monster_attack(self):
         """Handles the monster killing the player."""
         print("GROWL")
         time.sleep(1)
@@ -160,7 +162,7 @@ class Engine(object):
         time.sleep(5)
         return
     
-    def end_game(alive):
+    def end_game(self, alive):
         """Prints the final end game message based if the player is alive 
         (alive == True) or dead (alive == False)."""
         if alive:
